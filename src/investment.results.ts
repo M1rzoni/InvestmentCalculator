@@ -18,4 +18,5 @@ function calcualteInvestmentResults() {
       totalAmountInvested: initialInvestment + annualInvstment * year,
     });
   }
+  return annualData;
 }
