@@ -1,9 +1,10 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, Input, input } from '@angular/core';
 
 @Component({
   selector: 'app-calculator-result',
   standalone: true,
-  imports: [],
+  imports: [CurrencyPipe],
   templateUrl: './calculator-result.component.html',
   styleUrl: './calculator-result.component.css',
 })
