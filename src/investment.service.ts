@@ -1,27 +1,39 @@
-// import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { CalculatorModule } from './app/calculator/calculator.model';
 
-// @Injectable({ providedIn: 'root' })
-// export class InvestmentService {
-//   calcualteInvestmentResults() {
-//     const annualData = [];
-//     let investmentValue = initialInvestment;
+@Injectable({ providedIn: 'root' })
+export class InvestmentService {
+  resultsData?: {
+    year: number;
+    interest: number;
+    valueEndOfYear: number;
+    annualInvestment: number;
+    totalInterest: number;
+    totalAmountInvested: number;
+  }[];
 
-//     for (let i = 0; i < duration; i++) {
-//       const year = i + 1;
-//       const interestEarnedInYear = investmentValue * (expectedReturn / 100);
-//       investmentValue += interestEarnedInYear + annualInvestment;
-//       const totalInterest =
-//         investmentValue - annualInvestment * year - initialInvestment;
+  calcualteInvestmentResults(data: CalculatorModule) {
+    const { initialInvestment, duration, expectedReturn, annualInvestment } =
+      data;
+    const annualData = [];
+    let investmentValue = initialInvestment;
 
-//       annualData.push({
-//         year: year,
-//         interest: interestEarnedInYear,
-//         valueEndOfYear: investmentValue,
-//         annualInvestment: annualInvestment,
-//         totalInterest: totalInterest,
-//         totalAmountInvested: initialInvestment + annualInvstment * year,
-//       });
-//     }
-//     return annualData;
-//   }
-// }
+    for (let i = 0; i < duration; i++) {
+      const year = i + 1;
+      const interestEarnedInYear = investmentValue * (expectedReturn / 100);
+      investmentValue += interestEarnedInYear + annualInvestment;
+      const totalInterest =
+        investmentValue - annualInvestment * year - initialInvestment;
+
+      annualData.push({
+        year: year,
+        interest: interestEarnedInYear,
+        valueEndOfYear: investmentValue,
+        annualInvestment: annualInvestment,
+        totalInterest: totalInterest,
+        totalAmountInvested: initialInvestment + annualInvestment * year,
+      });
+    }
+    this.resultsData = annualData;
+  }
+}
