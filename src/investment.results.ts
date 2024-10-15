@@ -1,4 +1,9 @@
-function calcualteInvestmentResults() {
+function calcualteInvestmentResults(
+  initialInvestment: number,
+  duration: number,
+  expectedReturn: number,
+  annualInvestment: number
+) {
   const annualData = [];
   let investmentValue = initialInvestment;
 
@@ -15,7 +20,7 @@ function calcualteInvestmentResults() {
       valueEndOfYear: investmentValue,
       annualInvestment: annualInvestment,
       totalInterest: totalInterest,
-      totalAmountInvested: initialInvestment + annualInvstment * year,
+      totalAmountInvested: initialInvestment + annualInvestment * year,
     });
   }
   return annualData;

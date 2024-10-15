@@ -17,3 +17,9 @@ table {
     font-size: 0.85rem;
     color: #c2e9e0;
   }
+
+  .center{
+    justify-content: center;
+    display: flex;
+    color: white;
+  }
